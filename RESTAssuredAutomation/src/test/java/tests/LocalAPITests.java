@@ -5,9 +5,12 @@ import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
 import org.json.simple.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 
 public class LocalAPITests {
 	
@@ -52,7 +55,8 @@ public class LocalAPITests {
 		request.put("lastName", "Allen");
 		request.put("subjectId", "2");
 		
-		baseURI = "http://localhost:3000";
+		RestAssured.baseURI = "http://localhost:3000";
+		RestAssured.basePath = "/users/4";		//using in a different way here
 		
 		given().
 			header("Content-Type", "application/json").
@@ -60,7 +64,7 @@ public class LocalAPITests {
 			accept(ContentType.JSON).
 			body(request.toJSONString()).
 		when().
-			put("/users/4").
+			put().
 		then().
 			statusCode(200).log().all();		
 	}
@@ -68,12 +72,12 @@ public class LocalAPITests {
 	//@Test
 	public void testPatch() {
 		JSONObject request = new JSONObject();
-		request.put("firstName", "Victor");
-		request.put("lastName", "Stone");
+		request.put("firstName", RestUtils.getFirstName());
+		request.put("lastName", RestUtils.getLastName());
 		
 		baseURI = "http://localhost:3000";
 		
-		given().
+		Response res = given().
 			header("Content-Type", "application/json").
 			contentType(ContentType.JSON).
 			accept(ContentType.JSON).
@@ -82,7 +86,13 @@ public class LocalAPITests {
 			patch("/users/4").
 		then().
 			statusCode(200).
-			log().all();			
+			log().all().
+			extract().response();
+		
+// we can use below mentioned code to assert if the response is correct or not
+//		String jsonString = res.asString();
+//		Assert.assertEquals(jsonString.contains("Record added successfully"), true);
+		
 	}
 	
 	@Test
@@ -93,6 +103,7 @@ public class LocalAPITests {
 			delete("/users/4").
 		then().
 			statusCode(200).		//sometimes we get 200 for deletion, usually we get 204
-			log().all();
+			log().all().
+			extract().response();
 	}
 }

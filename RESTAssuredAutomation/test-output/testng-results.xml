@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-04-05T03:12:40 IST" name="Default suite" finished-at="2021-04-05T03:12:45 IST" duration-ms="5022">
+  <suite started-at="2021-04-07T02:43:16 IST" name="Default suite" finished-at="2021-04-07T02:43:18 IST" duration-ms="2422">
     <groups>
     </groups>
-    <test started-at="2021-04-05T03:12:40 IST" name="Default test" finished-at="2021-04-05T03:12:45 IST" duration-ms="5022">
-      <class name="tests.ValidateXMLSchema">
-        <test-method signature="xmlSchemaValidation()[pri:0, instance:tests.ValidateXMLSchema@2abf4075]" started-at="2021-04-05T03:12:40 IST" name="xmlSchemaValidation" finished-at="2021-04-05T03:12:45 IST" duration-ms="4958" status="PASS">
+    <test started-at="2021-04-07T02:43:16 IST" name="Default test" finished-at="2021-04-07T02:43:18 IST" duration-ms="2422">
+      <class name="tests.LocalAPITests">
+        <test-method signature="testDelete()[pri:0, instance:tests.LocalAPITests@62e7f11d]" started-at="2021-04-07T02:43:16 IST" name="testDelete" finished-at="2021-04-07T02:43:18 IST" duration-ms="2362" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- xmlSchemaValidation -->
-      </class> <!-- tests.ValidateXMLSchema -->
+        </test-method> <!-- testDelete -->
+      </class> <!-- tests.LocalAPITests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

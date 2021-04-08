@@ -36,7 +36,7 @@ public class TestExample {
 			get("/users?page=2").
 		then().
 			statusCode(200).
-			body("data[1].id", equalTo(8)).
+			body("data[1].id", equalTo(8)).	//data[1].id - find json path using JSONPathFinder
 			log().all();
 			
 	}
